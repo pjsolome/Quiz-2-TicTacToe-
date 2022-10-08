@@ -127,56 +127,70 @@ void computerMove(){
         }
     } else if(spaces[3] == spaces[4] && spaces[3] == spaces[5]){
         if(spaces[3] == 'X'){
+            gameOver = true;
             printf("Player 1 wins\n\n");
         } else if(spaces[3] == 'O'){
+            gameOver = true;
             printf("Player 2 wins\n\n");
         } else if(spaces[3] == ' '){
             gameOver = false;
         }
     } else if(spaces[6] == spaces[7] && spaces[6] == spaces[8]){
         if(spaces[6] == 'X'){
+            gameOver = true;
             printf("Player 1 wins\n\n");
         } else if(spaces[6] == 'O'){
+            gameOver = true;
             printf("Player 2 wins\n\n");
         } else if(spaces[6] == ' '){
             gameOver = false;
         }
     } else if(spaces[0] == spaces[3] && spaces[0] == spaces[6]){
         if(spaces[0] == 'X'){
+            gameOver = true;
             printf("Player 1 wins\n\n");
         } else if(spaces[0] == 'O'){
+            gameOver = true;
             printf("Player 2 wins\n\n");
         } else if(spaces[0] == ' '){
             gameOver = false;
         }
     } else if(spaces[1] == spaces[4] && spaces[1] == spaces[7]){
         if(spaces[1] == 'X'){
+            gameOver = true;
             printf("Player 1 wins\n\n");
         } else if(spaces[1] == 'O'){
+            gameOver = true;
             printf("Player 2 wins\n\n");
         } else if(spaces[1] == ' '){
             gameOver = false;
         }
     } else if(spaces[2] == spaces[5] && spaces[2] == spaces[8]){
         if(spaces[2] == 'X'){
+            gameOver = true;
             printf("Player 1 wins\n\n");
         } else if(spaces[2] == 'O'){
+            gameOver = true;
             printf("Player 2 wins\n\n");
         } else if(spaces[2] == ' '){
             gameOver = false;
         }
     } else if(spaces[0] == spaces[4] && spaces[0] == spaces[8]){
         if(spaces[0] == 'X'){
+            gameOver = true;
             printf("Player 1 wins\n\n");
         } else if(spaces[0] == 'O'){
+            gameOver = true;
             printf("Player 2 wins\n\n");
         } else if(spaces[0] == ' '){
             gameOver = false;
         }
     } else if(spaces[2] == spaces[4] && spaces[2] == spaces[6]){
         if(spaces[2] == 'X'){
+            gameOver = true;
             printf("Player 1 wins\n\n");
         } else if(spaces[2] == 'O'){
+            gameOver = true;
             printf("Player 2 wins\n\n");
         } else if(spaces[2] == ' '){
             gameOver = false;
