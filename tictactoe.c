@@ -212,10 +212,12 @@ int move = 0;
                     currentPlayer = 1;
                     playerMove();
                     checkEnd();
+                    move++;
                 } else {
                     currentPlayer = 2;
                     playerMove();
                     checkEnd();
+                    move++;
                 }
             }
         } else if(choice == 2) {
