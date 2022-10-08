@@ -9,7 +9,7 @@ static int currentPlayer;
 static int row;
 static int column;
 static int choice;
-static char playAgain = 'Y';
+static bool playAgain = true;
 static bool gameOver = false;
 
 // Welcome Screen
@@ -40,17 +40,19 @@ void status(){
     printf("2 | %c | %c | %c |\n", spaces[3], spaces[4], spaces[5]);
     printf("  +-----------+ \n");
     printf("3 | %c | %c | %c |\n", spaces[6], spaces[7], spaces[8]);
+    printf("  +-----------+ \n");
 }
 
 // pvp make moves
 void playerMove(){
 
-    printf("Player %d: choose a row ", currentPlayer);
+    printf("Player %d: Choose a row ", currentPlayer);
     fflush(stdout);
     scanf("%d", &row);
     printf("\nChoose a column ");
     fflush(stdout);
     scanf("%d", &column);
+    printf("\n\n");
 
     if(currentPlayer == 1){
         if(row == 1 && column == 1){
@@ -200,9 +202,14 @@ void computerMove(){
 
 //Ask for replay
 void replay(){
-    printf("Play again? (Y/N): ");
-    fflush(stdout);
-    scanf("%c", playAgain);
+    int response;
+    printf("Press 1 to play again. Any other number to quit. ");
+    scanf("%d", &response);
+    if(response == 1){
+        playAgain = true;
+    } else {
+        playAgain = false;
+    }
 }
 
 //Main
@@ -215,7 +222,7 @@ int move = 0;
         spaces[i] = ' ';
     }
     
-    while(playAgain == 'Y' || playAgain == 'y'){
+    while(playAgain == true){
         welcome();
         choose();
         if(choice == 1){
@@ -244,7 +251,7 @@ int move = 0;
                 checkEnd();
             }
         } else {
-            printf("Try again");
+            printf("\n\nTry again\n\n");
         }
         replay();
     }
