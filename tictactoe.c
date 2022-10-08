@@ -109,8 +109,13 @@ void computerMove(){
 
     /* Generate a random number 0 to 8 */
     randomNum = rand() % 9;
-
-    if(spaces[randomNum] == ' '){
+    
+    while(spaces[randomNum] == 'X' || spaces[randomNum] == 'O'){
+        randomNum = rand() % 9;
+        if(spaces[0] != ' ' && spaces[1] != ' ' && spaces[3] != ' ' && spaces[4] != ' ' && spaces[5] != ' ' && spaces[6] != ' ' && spaces[7] != ' ' && spaces[8] != ' '){
+            break;
+        }
+    } if(spaces[randomNum] == ' ') {
         spaces[randomNum] = 'O';
     }
 }
@@ -218,12 +223,11 @@ void replay(){
 //Main
 void main(){
 //keeps track of number of moves
-int move = 0;
+int move;
 
-
-    
     while(playAgain == true){
         gameOver = false;
+        move = 0;
         welcome();
             //initialize play spaces
     for(int i = 0; i < 9; i++){
@@ -260,6 +264,7 @@ int move = 0;
         } else {
             printf("\n\nTry again\n\n");
         }
+        status();
         replay();
     }
 }
