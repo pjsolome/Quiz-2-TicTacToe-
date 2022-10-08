@@ -9,6 +9,7 @@ static int currentPlayer;
 static int row;
 static int column;
 static int choice;
+static int tempNum;
 static bool playAgain = true;
 static bool gameOver = false;
 
@@ -54,49 +55,25 @@ void playerMove(){
         scanf("%d", &column);
         printf("\n\n");
 
-        if(currentPlayer == 1){
         if(row == 1 && column == 1){
-            spaces[0] = 'X';
-        } else if(row == 1 && column == 2){
-            spaces[1] = 'X';
-        } else if(row == 1 && column == 3){
-            spaces[2] = 'X';
-        } else if(row == 2 && column == 1){
-            spaces[3] = 'X';
-        } else if(row == 2 && column == 2){
-            spaces[4] = 'X';
-        } else if(row == 2 && column == 3){
-            spaces[5] = 'X';
-        } else if(row == 3 && column == 1){
-            spaces[6] = 'X';
-        } else if(row == 3 && column == 2){
-            spaces[7] = 'X';
-        } else if(row == 3 && column == 3){
-            spaces[8] = 'X';
-        }
-    }
-
-        if(currentPlayer == 2){
-        if(row == 1 && column == 1){
-            spaces[0] = 'O';
-        } else if(row == 1 && column == 2){
-            spaces[1] = 'O';
-        } else if(row == 1 && column == 3){
-            spaces[2] = 'O';
-        } else if(row == 2 && column == 1){
-            spaces[3] = 'O';
-        } else if(row == 2 && column == 2){
-            spaces[4] = 'O';
-        } else if(row == 2 && column == 3){
-            spaces[5] = 'O';
-        }else if(row == 3 && column == 1){
-            spaces[6] = 'O';
-        }else if(row == 3 && column == 2){
-            spaces[7] = 'O';
-        } else if(row == 3 && column == 3){
-            spaces[8] = 'O';
-        }
-    }
+            tempNum = 0;
+        } else if(row == 1 && column == 2) {
+            tempNum = 1;
+        } else if(row == 1 && column == 3) {
+            tempNum = 2;
+        } else if(row == 2 && column == 1) {
+            tempNum = 3;
+        } else if(row == 2 && column == 2) {
+            tempNum = 4;
+        } else if(row == 2 && column == 3) {
+            tempNum = 5;
+        } else if(row == 3 && column == 1) {
+            tempNum = 6;
+        } else if(row == 3 && column == 2) {
+            tempNum = 7;
+        } else if(row == 3 && column == 3) {
+            tempNum = 8;
+        } 
 }
 
 // pvc moves
@@ -241,11 +218,29 @@ int move;
                 if(move == 0 || move % 2 == 0){
                     currentPlayer = 1;
                     playerMove();
+                    while(spaces[tempNum] != ' '){
+                        printf("Try again\n\n");
+                        status();
+                        playerMove();
+                        if(spaces[tempNum] == ' '){
+                            break;
+                        }
+                    }
+                    spaces[tempNum] = 'X';
                     checkEnd();
                     move++;
                 } else {
                     currentPlayer = 2;
                     playerMove();
+                    while(spaces[tempNum] != ' '){
+                        printf("Try again\n\n");
+                        status();
+                        playerMove();
+                        if(spaces[tempNum] == ' '){
+                            break;
+                        }
+                    }
+                    spaces[tempNum] = 'O';
                     checkEnd();
                     move++;
                 }
@@ -256,6 +251,15 @@ int move;
                 currentPlayer = 1;
                 status();
                 playerMove();
+                while(spaces[tempNum] != ' '){
+                        printf("Try again\n\n");
+                        status();
+                        playerMove();
+                        if(spaces[tempNum] == ' '){
+                            break;
+                        }
+                }
+                spaces[tempNum] = 'X';
                 checkEnd();
                 status();
                 computerMove();
