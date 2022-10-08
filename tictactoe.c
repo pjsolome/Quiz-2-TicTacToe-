@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+//Globals
+static char spaces[9];
+static int currentPlayer = 1;
+static int row;
+static int column;
+
 // Welcome Screen
 void welcome(){
 printf("=========================== \n \n");
@@ -17,34 +23,39 @@ fflush(stdout);
 scanf("%d", &choice);
 
 printf("=========================== \n \n");
-if(choice <=2){
 printf("You have entered choice %d \n \n", choice);
-} else {
-    printf("Please choose 1 or 2");
-}
 
 }
 
 //Get status of board
 void status(){
-    static char spaces[9];
-
-    //initialize play spaces
-    for(int i = 0; i < 9; i++){
-        spaces[i] = ' ';
-    }
-
+    
     printf("The current status is: \n \n");
     printf("    1   2   3\n");
     printf("  +-----------+ \n");
-    printf("A | %c | %c | %c |\n", spaces[0], spaces[1], spaces[2]);
+    printf("1 | %c | %c | %c |\n", spaces[0], spaces[1], spaces[2]);
     printf("  +-----------+ \n");
-    printf("B | %c | %c | %c |\n", spaces[3], spaces[4], spaces[5]);
+    printf("2 | %c | %c | %c |\n", spaces[3], spaces[4], spaces[5]);
     printf("  +-----------+ \n");
-    printf("C | %c | %c | %c |\n", spaces[6], spaces[7], spaces[8]);
+    printf("3 | %c | %c | %c |\n", spaces[6], spaces[7], spaces[8]);
 }
 
 // pvp make moves
+void playerMove(){
+
+    printf("Player %d: choose a row ", currentPlayer);
+    fflush(stdout);
+    scanf("%d", &row);
+    printf("\nChoose a column ");
+    fflush(stdout);
+    scanf("%d", &column);
+
+    if(currentPlayer == 1){
+        if(row == 1 && column == 1){
+            spaces[0] = 'X';
+        }
+    }
+}
 
 // pvc moves
 
@@ -52,7 +63,14 @@ void status(){
 
 //Main
 void main(){
+    //initialize play spaces
+    for(int i = 0; i < 9; i++){
+        spaces[i] = ' ';
+    }
+
     welcome();
     choose();
+    status();
+    playerMove();
     status();
 }
