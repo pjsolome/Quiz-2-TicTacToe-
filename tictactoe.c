@@ -46,15 +46,15 @@ void status(){
 // pvp make moves
 void playerMove(){
 
-    printf("Player %d: Choose a row ", currentPlayer);
-    fflush(stdout);
-    scanf("%d", &row);
-    printf("\nChoose a column ");
-    fflush(stdout);
-    scanf("%d", &column);
-    printf("\n\n");
+        printf("Player %d: Choose a row ", currentPlayer);
+        fflush(stdout);
+        scanf("%d", &row);
+        printf("\nChoose a column ");
+        fflush(stdout);
+        scanf("%d", &column);
+        printf("\n\n");
 
-    if(currentPlayer == 1){
+        if(currentPlayer == 1){
         if(row == 1 && column == 1){
             spaces[0] = 'X';
         } else if(row == 1 && column == 2){
@@ -67,16 +67,16 @@ void playerMove(){
             spaces[4] = 'X';
         } else if(row == 2 && column == 3){
             spaces[5] = 'X';
-        }else if(row == 3 && column == 1){
+        } else if(row == 3 && column == 1){
             spaces[6] = 'X';
-        }else if(row == 3 && column == 2){
+        } else if(row == 3 && column == 2){
             spaces[7] = 'X';
         } else if(row == 3 && column == 3){
             spaces[8] = 'X';
         }
     }
 
-    if(currentPlayer == 2){
+        if(currentPlayer == 2){
         if(row == 1 && column == 1){
             spaces[0] = 'O';
         } else if(row == 1 && column == 2){
@@ -197,6 +197,9 @@ void computerMove(){
         } else if(spaces[2] == ' '){
             gameOver = false;
         }
+    } else if(spaces[0] != ' ' && spaces[1] != ' ' && spaces[3] != ' ' && spaces[4] != ' ' && spaces[5] != ' ' && spaces[6] != ' ' && spaces[7] != ' ' && spaces[8] != ' ') {
+        printf("No winners\n\n");
+        gameOver = true;
     }
 }
 
@@ -217,13 +220,15 @@ void main(){
 //keeps track of number of moves
 int move = 0;
 
-    //initialize play spaces
+
+    
+    while(playAgain == true){
+        gameOver = false;
+        welcome();
+            //initialize play spaces
     for(int i = 0; i < 9; i++){
         spaces[i] = ' ';
     }
-    
-    while(playAgain == true){
-        welcome();
         choose();
         if(choice == 1){
             printf("\n\nYou have entered choice 1\n\n");
@@ -243,10 +248,12 @@ int move = 0;
             }
         } else if(choice == 2) {
             printf("You have entered choice 2\n\n");
-            while(gameOver = false){
+            while(gameOver == false){
                 currentPlayer = 1;
+                status();
                 playerMove();
                 checkEnd();
+                status();
                 computerMove();
                 checkEnd();
             }
