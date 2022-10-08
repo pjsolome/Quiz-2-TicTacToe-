@@ -82,17 +82,17 @@ void playerMove(){
         } else if(row == 1 && column == 3){
             spaces[2] = 'O';
         } else if(row == 2 && column == 1){
-            spaces[2] = 'O';
+            spaces[3] = 'O';
         } else if(row == 2 && column == 2){
-            spaces[2] = 'O';
+            spaces[4] = 'O';
         } else if(row == 2 && column == 3){
-            spaces[2] = 'O';
+            spaces[5] = 'O';
         }else if(row == 3 && column == 1){
-            spaces[2] = 'O';
+            spaces[6] = 'O';
         }else if(row == 3 && column == 2){
-            spaces[2] = 'O';
+            spaces[7] = 'O';
         } else if(row == 3 && column == 3){
-            spaces[2] = 'O';
+            spaces[8] = 'O';
         }
     }
 }
