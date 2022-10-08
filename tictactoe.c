@@ -17,10 +17,32 @@ fflush(stdout);
 scanf("%d", &choice);
 
 printf("=========================== \n \n");
+if(choice <=2){
 printf("You have entered choice %d \n \n", choice);
+} else {
+    printf("Please choose 1 or 2");
 }
 
-// Show status of board
+}
+
+//Get status of board
+void status(){
+    static char spaces[9];
+
+    //initialize play spaces
+    for(int i = 0; i < 9; i++){
+        spaces[i] = ' ';
+    }
+
+    printf("The current status is: \n \n");
+    printf("    1   2   3\n");
+    printf("  +-----------+ \n");
+    printf("A | %c | %c | %c |\n", spaces[0], spaces[1], spaces[2]);
+    printf("  +-----------+ \n");
+    printf("B | %c | %c | %c |\n", spaces[3], spaces[4], spaces[5]);
+    printf("  +-----------+ \n");
+    printf("C | %c | %c | %c |\n", spaces[6], spaces[7], spaces[8]);
+}
 
 // pvp make moves
 
@@ -32,4 +54,5 @@ printf("You have entered choice %d \n \n", choice);
 void main(){
     welcome();
     choose();
+    status();
 }
